@@ -10,11 +10,13 @@ if [ -f /usr/bin/ninja ]; then
     # CMAKE_GENERATOR='Sublime Text 2 - Ninja'
     CMAKE_GENERATOR="Ninja"
     RUN_MAKE_CMD="/usr/bin/ninja -v -j ${LOGIC_CPU_COUNT}"
+    RUN_TEST_CMD="/usr/bin/ninja test"
     RUN_INSTALL_CMD="/usr/bin/ninja -v install"
 else
     # CMAKE_GENERATOR='Sublime Text 2 - Unix Makefiles'
     CMAKE_GENERATOR="Unix Makefiles"
     RUN_MAKE_CMD="make -j ${LOGIC_CPU_COUNT}"
+    RUN_TEST_CMD="make test"
     RUN_INSTALL_CMD="make install"
 fi
 
@@ -39,6 +41,13 @@ function BuildProj
     ${RUN_MAKE_CMD}
     if [ $? -ne 0 ]; then
         echo "failed to execute make in proj ["${PROJ}"]"
+        cd ..
+        exit 1
+    fi
+
+    ${RUN_TEST_CMD}
+    if [ $? -ne 0 ]; then
+        echo "failed to execute test in proj ["${PROJ}"]"
         cd ..
         exit 1
     fi
