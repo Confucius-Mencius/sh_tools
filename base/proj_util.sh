@@ -47,7 +47,7 @@ function BuildProj
 
     ${RUN_TEST_CMD}
     if [ $? -ne 0 ]; then
-        echo "failed to execute test in proj ["${PROJ}"]"
+        echo "failed to execute unit test in proj ["${PROJ}"]"
         cd ..
         exit 1
     fi
