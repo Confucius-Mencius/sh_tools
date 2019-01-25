@@ -4,7 +4,7 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-function MakeDir
+function MakeDir()
 {
     DIR=$1
 
@@ -13,7 +13,7 @@ function MakeDir
     fi
 }
 
-function Processbar
+function Processbar()
 {  
   local current=$1; local total=$2;  
   local maxlen=80; local barlen=66; local perclen=14;  
@@ -24,7 +24,7 @@ function Processbar
   printf "\r$format" $prog $perc  
 }  
 
-function SwapFileContent
+function SwapFileContent()
 {
     TMP_FILE=/tmp/`date +%s`.tmp
     mv $1 ${TMP_FILE}

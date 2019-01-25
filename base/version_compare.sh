@@ -12,8 +12,8 @@ function version_lt() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)"
 function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
 
 # if [ $# != 2 ]; then
-#     echo "usage: ${SCRIPT_PATH}/version_compare.sh <v1> <v2>"
-#     exit 1
+#     echo "Usage: ${SCRIPT_PATH}/version_compare.sh <v1> <v2>"
+#     exit 0
 # fi
 
 # VERSION1=$1
@@ -22,15 +22,16 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)"
 # if version_gt ${VERSION1} ${VERSION2}; then
 #    echo "${VERSION1} is greater than ${VERSION2}"
 # fi
- 
-# if version_le ${VERSION1} ${VERSION2}; then
-#    echo "${VERSION1} is less than or equal to ${VERSION2}"
-# fi
- 
-# if version_lt ${VERSION1} ${VERSION2}; then
-#    echo "${VERSION1} is less than ${VERSION2}"
-# fi
- 
+
 # if version_ge ${VERSION1} ${VERSION2}; then
 #    echo "${VERSION1} is greater than or equal to ${VERSION2}"
 # fi
+
+
+# if version_lt ${VERSION1} ${VERSION2}; then
+#    echo "${VERSION1} is less than ${VERSION2}"
+# fi
+
+# if version_le ${VERSION1} ${VERSION2}; then
+#    echo "${VERSION1} is less than or equal to ${VERSION2}"
+# fi 

@@ -4,10 +4,10 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-function Usage
+function Usage()
 {
     echo "Usage: $1 <dir>"
-    exit -1
+    exit 0
 }
 
 if [ $# -lt 1 ]; then
@@ -16,8 +16,7 @@ fi
 
 DIR=$1
 
-for i in `find $DIR`
-do
+for i in `find $DIR`; do
     if [ ! -d $i ]; then
         dos2unix $i
     fi

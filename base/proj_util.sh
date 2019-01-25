@@ -20,7 +20,7 @@ else
     RUN_INSTALL_CMD="make install"
 fi
 
-function BuildProj
+function BuildProj()
 {
     PROJ=$1
     PROJ_DIR=$2
@@ -53,7 +53,7 @@ function BuildProj
     fi
 }
 
-function RebuildProj
+function RebuildProj()
 {
     BUILD_DIR=$3
     rm -rf ${BUILD_DIR}
@@ -61,7 +61,7 @@ function RebuildProj
     BuildProj $1 $2 $3 $4 $5
 }
 
-function InstallProj
+function InstallProj()
 {
     PROJ=$1
     BUILD_DIR=$2
@@ -74,7 +74,7 @@ function InstallProj
     fi
 }
 
-function ClearProj
+function ClearProj()
 {
     PROJ=$1
     BUILD_DIR=$2

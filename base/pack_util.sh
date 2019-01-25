@@ -4,7 +4,7 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-function PackThirdParties
+function PackThirdParties()
 {
     # echo "pack third party libs"
 
@@ -28,7 +28,7 @@ function PackThirdParties
     done
 }
 
-function PackCommonComponents
+function PackCommonComponents()
 {
     # echo "pack common components"
 
@@ -42,7 +42,7 @@ function PackCommonComponents
 }
 
 # 通用的pack动态库
-function PackLib
+function PackLib()
 {
     FROM_DIR=$1
     TO_DIR=$2
@@ -52,7 +52,7 @@ function PackLib
     cp -d -rf ${FROM_DIR}/${LIB_NAME} ${TO_DIR}/
 }
 
-function PackServer
+function PackServer()
 {
     FROM_DIR=$1
     TO_DIR=$2
@@ -62,7 +62,7 @@ function PackServer
     cp -d -rf ${FROM_DIR}/${SERVER_NAME} ${TO_DIR}/
 }
 
-function PackScripts
+function PackScripts()
 {
     # echo "pack scripts"
 
@@ -72,7 +72,7 @@ function PackScripts
     cp -rf ${FROM_DIR}/scripts ${TO_DIR}/
 }
 
-function PackConf
+function PackConf()
 {
     # echo "pack conf"
 
