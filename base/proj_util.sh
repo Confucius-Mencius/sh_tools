@@ -27,6 +27,7 @@ function BuildProj()
     BUILD_DIR=$3
     BUILD_TYPE=$4
     INSTALL_PREFIX=$5
+    RUN_TEST=$6
 
     MakeDir ${BUILD_DIR}
     cd ${BUILD_DIR}
@@ -45,11 +46,13 @@ function BuildProj()
         exit 1
     fi
 
-    ${RUN_TEST_CMD}
-    if [ $? -ne 0 ]; then
-        echo "failed to execute unit test in proj ["${PROJ}"]"
-        cd ..
-        exit 1
+    if [ ${RUN_TEST} == 1 ]; then
+        ${RUN_TEST_CMD}
+        if [ $? -ne 0 ]; then
+            echo "failed to execute unit test in proj ["${PROJ}"]"
+            cd ..
+            exit 1
+        fi
     fi
 }
 
@@ -58,7 +61,7 @@ function RebuildProj()
     BUILD_DIR=$3
     rm -rf ${BUILD_DIR}
 
-    BuildProj $1 $2 $3 $4 $5
+    BuildProj $1 $2 $3 $4 $5 $6
 }
 
 function InstallProj()
