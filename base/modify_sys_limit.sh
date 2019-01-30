@@ -10,12 +10,18 @@ cp /etc/security/limits.conf ~/limits.conf.bak
 
 if ! grep /etc/security/limits.conf -rne '^[^#].*nofile'; then
     echo '修改单个进程可以打开的最大文件描述符数'
+
     sudo sed /etc/security/limits.conf -e '/End of file/i\
 *                soft   nofile          655350\
 *                hard   nofile          655350\
 root             soft   nofile          655350\
 root             hard   nofile          655350' -i
 fi
+
+# on ubuntu18.04 or linuxmint19, to modify ulimit -n to 655350, 
+# also add the line: 
+# DefaultLimitNOFILE=655350
+# to /etc/systemd/user.conf and /etc/systemd/system.conf 
 #----------------------------------------------------------------------
 
 #开启core dump
