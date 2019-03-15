@@ -18,6 +18,6 @@ DIR=$1
 
 for i in `find $DIR -name "*.h" -o -name "*.cpp" -o -name "*.pro" -o -name "*.ui" -o -name "*.qrc" -o -name "*.vert" -o -name "*.frag" -o -name "*.md"`; do
     if [ ! -d $i ]; then
-        chmod -x $i
+        chmod -x $i; chmod o-w $i;
     fi
 done
