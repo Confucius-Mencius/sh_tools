@@ -4,8 +4,6 @@
 # author: BrentHuang (guang11cheng@qq.com)
 ###############################################################################
 
-# 遍历指定目录及其中的子目录，对所有文件执行dos2unix。排除.git目录
-
 function Usage()
 {
     echo "Usage: $1 <dir>"
@@ -18,8 +16,8 @@ fi
 
 DIR=$1
 
-for i in `find $DIR`; do
+for i in `find $DIR -name "*.h" -o -name "*.cpp" -o -name "*.pro" -o -name "*.ui" -o -name "*.qrc" -o -name "*.vert" -o -name "*.frag" -o -name "*.md"`; do
     if [ ! -d $i ]; then
-        ls $i | grep -v ".git" | xargs dos2unix
+        chmod -x $i
     fi
 done
