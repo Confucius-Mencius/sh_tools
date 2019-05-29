@@ -7,13 +7,11 @@
 LOGIC_CPU_COUNT=`cat /proc/cpuinfo | grep "processor" | wc -l`
 
 if [ -f /usr/bin/ninja ]; then
-    # CMAKE_GENERATOR='Sublime Text 2 - Ninja'
     CMAKE_GENERATOR="Ninja"
     RUN_MAKE_CMD="/usr/bin/ninja -v -j ${LOGIC_CPU_COUNT}"
     RUN_TEST_CMD="/usr/bin/ninja test"
     RUN_INSTALL_CMD="/usr/bin/ninja -v install"
 else
-    # CMAKE_GENERATOR='Sublime Text 2 - Unix Makefiles'
     CMAKE_GENERATOR="Unix Makefiles"
     RUN_MAKE_CMD="make -j ${LOGIC_CPU_COUNT}"
     RUN_TEST_CMD="make test"
